@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Form</title>
+
+  <style>
+    .error {
+      color: red;
+    }
+    </style>
+</head>
+<body>
+
+<h1>Customer Form</h1>
+
+<form action="#" th:action="@{/processCustomerForm}" th:object="${customer}" method="post">
+  <p>First Name: <label>
+    <input type="text" th:field="*{firstName}" />
+  </label></p>
+  <p>Last Name (*): <label>
+    <input type="text" th:field="*{lastName}" />
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error">Last Name Error</span>
+  </label></p>
+
+  <p>Free Passes: <label>
+    <input type="text" th:field="*{freePasses}" />
+    <span th:if="${#fields.hasErrors('freePasses')}" th:errors="*{freePasses}" class="error"></span>
+  </label></p>
+
+  <p>Postal Code: <label>
+    <input type="text" th:field="*{postalCode}" />
+    <span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" class="error"></span>
+  </label></p>
+
+  <p>Course Code: <label>
+    <input type="text" th:field="*{courseCode}" />
+    <span th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}" class="error"></span>
+  </label></p>
+
+  <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+
+</form>
+</body>
+</html>
